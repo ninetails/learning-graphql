@@ -1,3 +1,16 @@
 {
-  "typescript.tsdk": ".vscode/pnpify/typescript/lib"
+  "typescript.tsdk": ".vscode/pnpify/typescript/lib",
+  "files.exclude": {
+    "**/.git": true,
+    "**/.gitignore": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    ".vscode": true,
+    ".pnp*": true,
+    ".yarn": true,
+    "LICENSE": true,
+    "yarn.lock": true
+  }
 }
