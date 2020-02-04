@@ -949,6 +949,7 @@ __metadata:
     "@commitlint/config-conventional": ^8.3.4
     "@yarnpkg/pnpify": ^2.0.0-rc.17
     husky: ^4.2.1
+    prettier: ^1.19.1
     typescript: ^3.7.5
   languageName: unknown
   linkType: soft
@@ -1300,6 +1301,15 @@ __metadata:
   dependencies:
     semver-compare: ^1.0.0
   checksum: 98ab999492f8b08f397513f3e03734562c2a2c11353bbfc1ee7133fc3c517e03e21fa71447d25e005a6dcbccbbc3676a83e94f5609594f09d74f34c5f1bea440
+  languageName: node
+  linkType: hard
+
+"prettier@npm:^1.19.1":
+  version: 1.19.1
+  resolution: "prettier@npm:1.19.1"
+  bin:
+    prettier: ./bin-prettier.js
+  checksum: 0b8665fa22259378feaf46a54a559a09bd2c367e6391015af5068e88c6fb8d96e20afc56a6a6b2bac2eb0ad1ad26302ea634377e6397eca09301f64b01f3021a
   languageName: node
   linkType: hard
 
