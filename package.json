@@ -5,5 +5,9 @@
   "license": "MIT",
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "devDependencies": {
+    "@yarnpkg/pnpify": "^2.0.0-rc.17",
+    "typescript": "^3.7.5"
+  }
 }
