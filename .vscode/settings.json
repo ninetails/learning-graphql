@@ -1,6 +1,7 @@
 {
   "typescript.tsdk": ".vscode/pnpify/typescript/lib",
   "files.exclude": {
+    "**/*.config.js": true,
     "**/.git": true,
     "**/.gitignore": true,
     "**/.svn": true,
