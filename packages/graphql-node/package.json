@@ -9,6 +9,7 @@
     "eslint-plugin-node": "^11.0.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
+    "nodemon": "^2.0.2",
     "prettier": "^1.19.1"
   },
   "dependencies": {
@@ -16,6 +17,7 @@
     "graphql-yoga": "^1.18.3"
   },
   "scripts": {
+    "dev": "nodemon -r ../../.pnp.js src/index.js",
     "fix:eslint": "eslint --ext .js --fix src",
     "fix:prettier": "prettier --write './*.{json,md,yml,yaml}'",
     "lint": "eslint --ext .js src",
