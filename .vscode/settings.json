@@ -9,6 +9,8 @@
     "**/.hg": true,
     "**/CVS": true,
     "**/.DS_Store": true,
+    "**/graphqlgen.yml": true,
+    "**/tsconfig.json": true,
     ".vscode": true,
     ".pnp*": true,
     ".yarn": true,
