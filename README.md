@@ -1,14 +1,16 @@
 # Learning GraphQL
 
-## graphql-node
+## Workspaces
+
+### graphql-node
 
 > https://www.howtographql.com/graphql-js/0-introduction/
 
-## react-apollo
+### react-apollo
 
 > https://www.howtographql.com/react-apollo/0-introduction/
 
-## react-urql
+### react-urql
 
 > https://www.howtographql.com/react-urql/0-introduction/
 
