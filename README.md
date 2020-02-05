@@ -14,6 +14,21 @@
 
 > https://www.howtographql.com/react-urql/0-introduction/
 
+## Before Starting
+
+Run
+
+```sh
+$ cp .yarnrc.yml.example .yarnrc.yml
+```
+
+Also:
+
+```sh
+$ yarn import plugin interactive-tools
+$ yarn import plugin workspace-tools
+```
+
 ## License
 
 [MIT](./LICENSE)
