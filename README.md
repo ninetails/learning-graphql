@@ -26,6 +26,7 @@ Also:
 
 ```sh
 $ yarn import plugin interactive-tools
+$ yarn plugin import typescript
 $ yarn import plugin workspace-tools
 ```
 

@@ -233,6 +233,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/bcrypt@npm:3.0.0":
+  version: 3.0.0
+  resolution: "@types/bcrypt@npm:3.0.0"
+  checksum: f0e61159b3f279238d95a4342797affd5579cc96ab12bb2bd330c6c7a121c10c83a3326e51d002ad299f38f6332cefa713315ac897b5f5b449e5c4ffa45bb136
+  languageName: node
+  linkType: hard
+
 "@types/body-parser@npm:*":
   version: 1.17.1
   resolution: "@types/body-parser@npm:1.17.1"
@@ -337,6 +344,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/jsonwebtoken@npm:8.3.7":
+  version: 8.3.7
+  resolution: "@types/jsonwebtoken@npm:8.3.7"
+  dependencies:
+    "@types/node": "*"
+  checksum: 7b5b0bbf08fe849b4b95073d0212fe59c209118a6779a2bd30bb77b75cf5e4a829ef719a7717d00b040165eac70bb2275211cf344a2277a9a165ae09591c671a
+  languageName: node
+  linkType: hard
+
 "@types/methods@npm:^1.1.0":
   version: 1.1.0
   resolution: "@types/methods@npm:1.1.0"
@@ -351,7 +367,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*":
+"@types/node@npm:*, @types/node@npm:^13.7.0":
   version: 13.7.0
   resolution: "@types/node@npm:13.7.0"
   checksum: 3ee505198cb714c56ce20fca902fcbd05643badc22c2f25917a2544b1a1d905b9086b90147e79bd977a9c8bb912db60240d11152827ad779e9373cdd5864e5c2
@@ -940,6 +956,16 @@ __metadata:
   dependencies:
     tweetnacl: ^0.14.3
   checksum: be6f38b9db6df9b023c17d952a02809eec63931c2183e6b3a9b373f971f85f8a1372e3a379d72877f748695d313eaee033fc1b7905448f62d75e4bef3ef175cb
+  languageName: node
+  linkType: hard
+
+"bcrypt@npm:^3.0.8":
+  version: 3.0.8
+  resolution: "bcrypt@npm:3.0.8"
+  dependencies:
+    nan: 2.14.0
+    node-pre-gyp: 0.14.0
+  checksum: 8a1a278572e39b116f31d25634b95e3cdea1bb826dd773663f7299d9ba08d1bcd87b9c390f69661a1c8c4ab3f7e2001ba6e4f71a3b69d872da9757f882131524
   languageName: node
   linkType: hard
 
@@ -1651,6 +1677,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"detect-libc@npm:^1.0.2":
+  version: 1.0.3
+  resolution: "detect-libc@npm:1.0.3"
+  bin:
+    detect-libc: ./bin/detect-libc.js
+  checksum: c1f0d9ae0ac0f0b558ffee547a51dc4de58e154e2a68faf1fa3c8a20dc37741b2a339a9fcc0c0601e70afa6640b45008561e9d3adbc79fa357a388b76ca44cf6
+  languageName: node
+  linkType: hard
+
 "dicer@npm:0.2.5":
   version: 0.2.5
   resolution: "dicer@npm:0.2.5"
@@ -1718,6 +1753,13 @@ __metadata:
   dependencies:
     is-obj: ^1.0.0
   checksum: b0fdbfc94ac0eaa061828e2f506e9271fe455ea763b407531fd142c6d8725fc8c8ab56654b3c2a567706afe1f7c87ace7708f8ecd552c05aef33cf32d5a52967
+  languageName: node
+  linkType: hard
+
+"dotenv@npm:^8.2.0":
+  version: 8.2.0
+  resolution: "dotenv@npm:8.2.0"
+  checksum: 552d2c06ec0eee57b98c298105556041e4fd8ad985b34a73173a197e722478cd9bdaad2f98d80f3a227a414e2f4e6d4a2121b400a044e0690be1832c546dea55
   languageName: node
   linkType: hard
 
@@ -2617,8 +2659,13 @@ fsevents@~2.1.2:
   version: 0.0.0-use.local
   resolution: "graphql-node@workspace:packages/graphql-node"
   dependencies:
+    "@types/bcrypt": 3.0.0
+    "@types/jsonwebtoken": 8.3.7
+    "@types/node": ^13.7.0
     "@typescript-eslint/eslint-plugin": ^2.19.0
     "@yarnpkg/pnpify": ^2.0.0-rc.17
+    bcrypt: ^3.0.8
+    dotenv: ^8.2.0
     eslint: ^6.8.0
     eslint-config-standard-with-typescript: ^12.0.1
     eslint-plugin-import: ^2.20.1
@@ -2628,6 +2675,7 @@ fsevents@~2.1.2:
     graphql-tools: ^4.0.6
     graphql-yoga: ^1.18.3
     graphqlgen: ^0.6.0-rc9
+    jsonwebtoken: ^8.5.1
     nodemon: ^2.0.2
     prettier: ^1.19.1
     prisma-client-lib: ^1.34.10
@@ -2927,7 +2975,7 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"iconv-lite@npm:0.4.24, iconv-lite@npm:^0.4.24":
+"iconv-lite@npm:0.4.24, iconv-lite@npm:^0.4.24, iconv-lite@npm:^0.4.4":
   version: 0.4.24
   resolution: "iconv-lite@npm:0.4.24"
   dependencies:
@@ -2940,6 +2988,15 @@ fsevents@~2.1.2:
   version: 1.0.1
   resolution: "ignore-by-default@npm:1.0.1"
   checksum: a5723cf6eda94be68ce70d92914d842c0e60a83b55d0a11da9e1c0968a41051d32983fdcb8e38f4c91d645e83a29cfabbf454c10e691de70cd8e9ed8c0cabf2e
+  languageName: node
+  linkType: hard
+
+"ignore-walk@npm:^3.0.1":
+  version: 3.0.3
+  resolution: "ignore-walk@npm:3.0.3"
+  dependencies:
+    minimatch: ^3.0.4
+  checksum: 77be01f47c6c3305d4566859e2709b5f6c7f7667b3f24fc8a906bf9e3b938fa63e535d9827b4f034916f6dd453a3e25746ce1b2b68f9eabe8399f8d1baf2d6d6
   languageName: node
   linkType: hard
 
@@ -3382,7 +3439,7 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"jsonwebtoken@npm:^8.3.0":
+"jsonwebtoken@npm:^8.3.0, jsonwebtoken@npm:^8.5.1":
   version: 8.5.1
   resolution: "jsonwebtoken@npm:8.5.1"
   dependencies:
@@ -3870,10 +3927,32 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
+"nan@npm:2.14.0":
+  version: 2.14.0
+  resolution: "nan@npm:2.14.0"
+  dependencies:
+    node-gyp: latest
+  checksum: 900ee9c9f5e13c493196bbfbbe09af1430e7ebb5efcebf7ba2975a834f68d5253a6f67f5ec40e14a9acbab5b620e047bebbd16f608a50a909edbdb7c74ab5eea
+  languageName: node
+  linkType: hard
+
 "natural-compare@npm:^1.4.0":
   version: 1.4.0
   resolution: "natural-compare@npm:1.4.0"
   checksum: 7701162725a727ffbf4d0f60ffd48cec7b07eaf4c2a0bdd34139aa8800bff22cf6528ee95729d75ad9f92bed36a9d6f11904f4bd1ef3e535d62df5fe97a5e4e5
+  languageName: node
+  linkType: hard
+
+"needle@npm:^2.2.1":
+  version: 2.4.0
+  resolution: "needle@npm:2.4.0"
+  dependencies:
+    debug: ^3.2.6
+    iconv-lite: ^0.4.4
+    sax: ^1.2.4
+  bin:
+    needle: ./bin/needle
+  checksum: 8de4863716a94f2b607783e0d1ea3b2a2fdf3ae1864d11082959dff231578f0ff2532b660f7a40459cdf021caacb4edd0902874c2958ef07aa0ff30a98487a6b
   languageName: node
   linkType: hard
 
@@ -3916,6 +3995,26 @@ fsevents@~2.1.2:
   bin:
     node-gyp: bin/node-gyp.js
   checksum: 322c50640712e423c7f8b432bbd7bbb9441d09b542f3f2b8ed599e88473eeafbdc80f7e984f9c74229d9f33d1949f2af985a915ef72f6621c9d154b3e62fd71f
+  languageName: node
+  linkType: hard
+
+"node-pre-gyp@npm:0.14.0":
+  version: 0.14.0
+  resolution: "node-pre-gyp@npm:0.14.0"
+  dependencies:
+    detect-libc: ^1.0.2
+    mkdirp: ^0.5.1
+    needle: ^2.2.1
+    nopt: ^4.0.1
+    npm-packlist: ^1.1.6
+    npmlog: ^4.0.2
+    rc: ^1.2.7
+    rimraf: ^2.6.1
+    semver: ^5.3.0
+    tar: ^4.4.2
+  bin:
+    node-pre-gyp: ./bin/node-pre-gyp
+  checksum: 9a59abe6f8a7aa997cc0966c6087a1024006ccca80cc114eef3c0a22e1b8d246297b10065e6b00853dca794266b542ef76c3c06544bae5c8ededce117f98bb0e
   languageName: node
   linkType: hard
 
@@ -3981,6 +4080,33 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
+"npm-bundled@npm:^1.0.1":
+  version: 1.1.1
+  resolution: "npm-bundled@npm:1.1.1"
+  dependencies:
+    npm-normalize-package-bin: ^1.0.1
+  checksum: d56777f0855e2bf477002fc2ce9c74b4e8b99d3f5786e846e9db0abe5d7c720362d2093442d837d5dc4fa9f092904e2c5e0391814a9cb0ff7bb9482a7a7d1eec
+  languageName: node
+  linkType: hard
+
+"npm-normalize-package-bin@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "npm-normalize-package-bin@npm:1.0.1"
+  checksum: 682a698dd2f5589792d21e86944163602357e1d70bf50863d08006e26415528e38c68c9548ab3f0dba119132c68386bd1721acb170ab3ac185593b02c3671253
+  languageName: node
+  linkType: hard
+
+"npm-packlist@npm:^1.1.6":
+  version: 1.4.8
+  resolution: "npm-packlist@npm:1.4.8"
+  dependencies:
+    ignore-walk: ^3.0.1
+    npm-bundled: ^1.0.1
+    npm-normalize-package-bin: ^1.0.1
+  checksum: 2ad40db6640a124aef3d4d8d3072a2f0d0d410b8cfb680ab4d23dd67e11d54699dfb6c4388a305848faae45187c035b7c07392e7ad0debb61bf4913a6edbee51
+  languageName: node
+  linkType: hard
+
 "npm-run-path@npm:^2.0.0":
   version: 2.0.2
   resolution: "npm-run-path@npm:2.0.2"
@@ -3990,7 +4116,7 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"npmlog@npm:^4.1.2":
+"npmlog@npm:^4.0.2, npmlog@npm:^4.1.2":
   version: 4.1.2
   resolution: "npmlog@npm:4.1.2"
   dependencies:
@@ -4641,7 +4767,7 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"rc@npm:^1.0.1, rc@npm:^1.1.6":
+"rc@npm:^1.0.1, rc@npm:^1.1.6, rc@npm:^1.2.7":
   version: 1.2.8
   resolution: "rc@npm:1.2.8"
   dependencies:
@@ -4922,7 +5048,7 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"rimraf@npm:2.6.3":
+"rimraf@npm:2.6.3, rimraf@npm:^2.6.1":
   version: 2.6.3
   resolution: "rimraf@npm:2.6.3"
   dependencies:
@@ -4983,6 +5109,13 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
+"sax@npm:^1.2.4":
+  version: 1.2.4
+  resolution: "sax@npm:1.2.4"
+  checksum: ca31df9cef3645a5a1d39ba2c946287261ef028bc89c06823685c700117bc60d7f02f01786d9f8566fb8620ce0f2d68263a8ae024104d2077c7489ce4b5fec26
+  languageName: node
+  linkType: hard
+
 "semver-compare@npm:^1.0.0":
   version: 1.0.0
   resolution: "semver-compare@npm:1.0.0"
@@ -5006,7 +5139,7 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"semver@npm:2 || 3 || 4 || 5, semver@npm:^5.0.3, semver@npm:^5.1.0, semver@npm:^5.5.0, semver@npm:^5.6.0, semver@npm:^5.7.1":
+"semver@npm:2 || 3 || 4 || 5, semver@npm:^5.0.3, semver@npm:^5.1.0, semver@npm:^5.3.0, semver@npm:^5.5.0, semver@npm:^5.6.0, semver@npm:^5.7.1":
   version: 5.7.1
   resolution: "semver@npm:5.7.1"
   bin:
@@ -5425,7 +5558,7 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"tar@npm:^4.4.12":
+"tar@npm:^4.4.12, tar@npm:^4.4.2":
   version: 4.4.13
   resolution: "tar@npm:4.4.13"
   dependencies:

@@ -3,4 +3,5 @@ schema: ./src/schema.graphql
 output: ./src/generated/graphqlgen.ts
 models:
   files:
+    - ./src/models.d.ts
     - ./src/generated/prisma-client/index.d.ts

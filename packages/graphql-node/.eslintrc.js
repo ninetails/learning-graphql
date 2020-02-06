@@ -14,6 +14,7 @@ module.exports = {
     project: './tsconfig.json'
   },
   rules: {
+    "@typescript-eslint/no-floating-promises": "off",
     "import/no-duplicates": "off"
   },
   overrides: [
