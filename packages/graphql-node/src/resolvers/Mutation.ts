@@ -55,12 +55,31 @@ const deleteLink: MutationResolvers.DeleteLinkResolver = (_, args, context) => {
   return context.prisma.deleteLink(args)
 }
 
+const vote: MutationResolvers.VoteResolver = async (_, args, context, __) => {
+  const userId = getUserId(context)
+
+  const linkExists = await context.prisma.$exists.vote({
+    user: { id: userId },
+    link: { id: args.linkId },
+  })
+  if (linkExists) {
+    throw new Error(`Already voted for link: ${args.linkId}`)
+  }
+
+  // 3
+  return context.prisma.createVote({
+    user: { connect: { id: userId } },
+    link: { connect: { id: args.linkId } },
+  })
+}
+
 const Mutation: MutationResolvers.Type = {
   post,
   updateLink,
   deleteLink,
   signup,
-  login
+  login,
+  vote
 }
 
 export default Mutation

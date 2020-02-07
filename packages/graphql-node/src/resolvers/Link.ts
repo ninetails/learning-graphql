@@ -6,3 +6,6 @@ export const url: LinkResolvers.UrlResolver = ({ url }) => url
 
 export const postedBy: LinkResolvers.PostedByResolver = (parent, _, context) =>
   context.prisma.link({ id: parent.id }).postedBy()
+
+export const votes: LinkResolvers.VotesResolver = (parent, _, context) =>
+  context.prisma.link({ id: parent.id }).votes()
