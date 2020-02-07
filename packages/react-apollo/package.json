@@ -25,6 +25,8 @@
     "@types/testing-library__jest-dom": "^5.0.1",
     "@types/testing-library__react": "^9.1.2",
     "@typescript-eslint/eslint-plugin": "^2.19.0",
+    "customize-cra": "^0.9.1",
+    "customize-cra-react-refresh": "^1.0.1",
     "eslint": "^6.8.0",
     "eslint-config-standard-react": "^9.2.0",
     "eslint-config-standard-with-typescript": "^12.0.1",
@@ -36,20 +38,23 @@
     "jest-chain": "^1.1.5",
     "jest-extended": "^0.11.5",
     "prettier": "^1.19.1",
+    "react-app-rewired": "^2.1.5",
+    "react-refresh": "^0.7.2",
     "react-scripts": "^3.3.1",
     "tslib": "^1.10.0",
     "typescript": "^3.7.5"
   },
   "dependencies": {
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react": "experimental",
+    "react-dom": "experimental",
+    "tiny-invariant": "^1.1.0"
   },
   "scripts": {
-    "build": "react-scripts build",
+    "build": "react-app-rewired build",
     "fix:eslint": "eslint --ext .js,.ts,.tsx --fix src",
-    "fix:prettier": "prettier --write './*.{json,md,yml,yaml}' 'src/**/*.{json,md,yml,yaml}'",
+    "fix:prettier": "prettier --write './*.{json,md,yml,yaml}' 'src/**/*.{css,html,json,md,txt,yml,yaml}'",
     "lint": "eslint --ext .js,.ts,.tsx src",
-    "start": "react-scripts start",
-    "test": "react-scripts test"
+    "start": "react-app-rewired start",
+    "test": "react-app-rewired test"
   }
 }

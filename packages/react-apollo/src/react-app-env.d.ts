@@ -1,3 +1,5 @@
+import 'react/experimental'
+import 'react-dom/experimental'
 import 'react-scripts'
 import 'jest-extended'
 import 'jest-chain'
