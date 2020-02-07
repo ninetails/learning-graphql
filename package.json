@@ -15,6 +15,9 @@
     "typescript": "^3.7.5"
   },
   "scripts": {
-    "fix:prettier": "prettier --write '**/*.{json,md,yml,yaml}'"
+    "fix:prettier": "prettier --write './*.{json,md,yml,yaml}'",
+    "all:fix:eslint": "yarn workspaces foreach -p run fix:eslint",
+    "all:fix:prettier": "yarn workspaces foreach -p run fix:prettier",
+    "all:lint": "yarn workspaces foreach -p run lint"
   }
 }

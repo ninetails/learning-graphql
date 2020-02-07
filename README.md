@@ -1,16 +1,34 @@
 # Learning GraphQL
 
-## graphql-node
+## Workspaces
+
+### graphql-node
 
 > https://www.howtographql.com/graphql-js/0-introduction/
 
-## react-apollo
+### react-apollo
 
 > https://www.howtographql.com/react-apollo/0-introduction/
 
-## react-urql
+### react-urql
 
 > https://www.howtographql.com/react-urql/0-introduction/
+
+## Before Starting
+
+Run
+
+```sh
+$ cp .yarnrc.yml.example .yarnrc.yml
+```
+
+Also:
+
+```sh
+$ yarn import plugin interactive-tools
+$ yarn plugin import typescript
+$ yarn import plugin workspace-tools
+```
 
 ## License
 

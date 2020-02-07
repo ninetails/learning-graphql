@@ -1,0 +1,4 @@
+packageExtensions:
+  "apollo-server-core@*":
+    dependencies:
+      graphql: "*"

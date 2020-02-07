@@ -229,6 +229,7 @@ $RECYCLE.BIN/
 
 ### Yarn ###
 .yarnrc*
+!.yarnrc*.example
 .yarn/*
 .pnp*
 !.vscode/pnpify
