@@ -1,4 +1,4 @@
-import { SubscriptionResolvers } from "../generated/graphqlgen"
+import { SubscriptionResolvers } from '../generated/graphqlgen'
 
 export const newLink: SubscriptionResolvers.NewLinkResolver = {
   subscribe: (_, __, context, ___) =>

@@ -6,7 +6,7 @@ import * as Link from './Link'
 import * as User from './User'
 import * as Vote from './Vote'
 
-const resolvers: Omit<Resolvers, 'AuthPayload'> = {
+const resolvers: Omit<Resolvers, 'AuthPayload'|'Feed'> = {
   Query,
   Mutation,
   Subscription,

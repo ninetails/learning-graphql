@@ -60,16 +60,16 @@ const vote: MutationResolvers.VoteResolver = async (_, args, context, __) => {
 
   const linkExists = await context.prisma.$exists.vote({
     user: { id: userId },
-    link: { id: args.linkId },
+    link: { id: args.linkId }
   })
-  if (linkExists) {
+
+  if (typeof linkExists !== 'undefined') {
     throw new Error(`Already voted for link: ${args.linkId}`)
   }
 
-  // 3
   return context.prisma.createVote({
     user: { connect: { id: userId } },
-    link: { connect: { id: args.linkId } },
+    link: { connect: { id: args.linkId } }
   })
 }
 
