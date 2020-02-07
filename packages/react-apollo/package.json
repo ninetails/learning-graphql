@@ -1,0 +1,55 @@
+{
+  "name": "react-apollo",
+  "version": "0.0.0",
+  "private": true,
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.1.1",
+    "@testing-library/react": "^9.4.0",
+    "@testing-library/user-event": "^8.1.0",
+    "@types/jest": "^25.1.2",
+    "@types/node": "^13.7.0",
+    "@types/react": "^16.9.19",
+    "@types/react-dom": "^16.9.5",
+    "@types/testing-library__jest-dom": "^5.0.1",
+    "@types/testing-library__react": "^9.1.2",
+    "@typescript-eslint/eslint-plugin": "^2.19.0",
+    "eslint": "^6.8.0",
+    "eslint-config-standard-react": "^9.2.0",
+    "eslint-config-standard-with-typescript": "^12.0.1",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.18.3",
+    "eslint-plugin-standard": "^4.0.1",
+    "jest-chain": "^1.1.5",
+    "jest-extended": "^0.11.5",
+    "prettier": "^1.19.1",
+    "react-scripts": "^3.3.1",
+    "tslib": "^1.10.0",
+    "typescript": "^3.7.5"
+  },
+  "dependencies": {
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  },
+  "scripts": {
+    "build": "react-scripts build",
+    "fix:eslint": "eslint --ext .js,.ts,.tsx --fix src",
+    "fix:prettier": "prettier --write './*.{json,md,yml,yaml}' 'src/**/*.{json,md,yml,yaml}'",
+    "lint": "eslint --ext .js,.ts,.tsx src",
+    "start": "react-scripts start",
+    "test": "react-scripts test"
+  }
+}
