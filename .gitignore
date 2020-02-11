@@ -231,5 +231,6 @@ $RECYCLE.BIN/
 .yarnrc*
 !.yarnrc*.example
 .yarn/*
+.yarn-offline/*
 .pnp*
 !.vscode/pnpify

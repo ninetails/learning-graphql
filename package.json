@@ -9,15 +9,18 @@
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
-    "@yarnpkg/pnpify": "^2.0.0-rc.17",
     "husky": "^4.2.1",
     "prettier": "^1.19.1",
+    "rimraf": "^3.0.2",
     "typescript": "^3.7.5"
   },
   "scripts": {
     "fix:prettier": "prettier --write './*.{json,md,yml,yaml}'",
-    "all:fix:eslint": "yarn workspaces foreach -p run fix:eslint",
-    "all:fix:prettier": "yarn workspaces foreach -p run fix:prettier",
-    "all:lint": "yarn workspaces foreach -p run lint"
+    "all:fix:eslint": "yarn workspaces run fix:eslint",
+    "all:fix:prettier": "yarn workspaces run fix:prettier",
+    "all:lint": "yarn workspaces run lint",
+    "all:clean": "yarn workspaces run clean || :",
+    "clean": "rimraf node_modules || :",
+    "reset": "yarn all:clean && yarn clean && yarn install --prefer-offline --emoji"
   }
 }

@@ -1,24 +1,25 @@
 {
-  "typescript.tsdk": ".vscode/pnpify/typescript/lib",
   "editor.codeActionsOnSave": {
     "source.fixAll": true
   },
   "files.exclude": {
-    "**/*.config.js": true,
-    "**/.git": true,
-    "**/.*ignore": true,
-    "**/.*rc*": true,
-    "**/.svn": true,
-    "**/.hg": true,
-    "**/CVS": true,
-    "**/.DS_Store": true,
-    "**/graphqlgen.yml": true,
-    "**/tsconfig.json": true,
-    ".vscode": true,
-    ".pnp*": true,
-    ".yarn": true,
-    ".yarnrc*": true,
-    "LICENSE": true,
-    "yarn.lock": true
+    "**/*.config.js": false,
+    "**/.git": false,
+    "**/.*ignore": false,
+    "**/.*rc*": false,
+    "**/.svn": false,
+    "**/.hg": false,
+    "**/CVS": false,
+    "**/.DS_Store": false,
+    "**/build/": false,
+    "**/node_modules/": false,
+    "**/graphqlgen.yml": false,
+    "**/tsconfig.json": false,
+    ".vscode": false,
+    ".pnp*": false,
+    ".yarn": false,
+    ".yarnrc*": false,
+    "LICENSE": false,
+    "yarn.lock": false
   }
 }

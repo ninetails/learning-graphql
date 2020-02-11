@@ -19,16 +19,16 @@
 Run
 
 ```sh
-$ cp .yarnrc.yml.example .yarnrc.yml
+$ cp .yarnrc.example .yarnrc
 ```
 
 Also:
 
 ```sh
-$ yarn import plugin interactive-tools
-$ yarn plugin import typescript
-$ yarn import plugin workspace-tools
+$ yarn set version ^1
 ```
+
+If using **Yarn Berry**.
 
 ## License
 

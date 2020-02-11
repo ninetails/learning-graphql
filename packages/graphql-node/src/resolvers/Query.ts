@@ -20,7 +20,7 @@ const Query: QueryResolvers.Type = {
 
     const count = await context.prisma
       .linksConnection({
-        where,
+        where
       })
       .aggregate()
       .count()
