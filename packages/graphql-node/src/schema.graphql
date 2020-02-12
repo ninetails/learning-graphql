@@ -1,5 +1,15 @@
 scalar DateTime
 
+directive @cacheControl(
+    maxAge: Int,
+    scope: CacheControlScope
+) on OBJECT | FIELD | FIELD_DEFINITION
+
+enum CacheControlScope {
+    PUBLIC
+    PRIVATE
+}
+
 type Query {
   feed(filter: String, skip: Int, first: Int, orderBy: LinkOrderByInput): Feed!
   link(id: ID!): Link
@@ -49,7 +59,7 @@ type AuthPayload {
   user: User
 }
 
-type User {
+type User @cacheControl(scope: PRIVATE) {
   id: ID!
   name: String!
   email: String!

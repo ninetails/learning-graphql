@@ -17,7 +17,7 @@ module.exports = [
   merge(base, {
     target: 'web',
     entry: {
-      main: resolve(__dirname, 'src/client.tsx')
+      main: resolve(__dirname, 'src/client')
     },
     output: {
       filename: ifDev('[name].js', '[name].[contenthash].js'),
@@ -65,7 +65,7 @@ module.exports = [
   merge(base, {
     target: 'node',
     entry: {
-      server: resolve(__dirname, 'src/server.tsx')
+      server: resolve(__dirname, 'src/server')
     },
     output: {
       filename: '[name].js',

@@ -45,8 +45,10 @@ const post: MutationResolvers.PostResolver = (_, args, context) => {
 
 const updateLink: MutationResolvers.UpdateLinkResolver = (_, args, context) => {
   getUserId(context)
-
-  return context.prisma.updateLink(args)
+  const { id, url, description } = args
+  const data = { url, description }
+  const where = { id }
+  return context.prisma.updateLink({ data, where })
 }
 
 const deleteLink: MutationResolvers.DeleteLinkResolver = (_, args, context) => {

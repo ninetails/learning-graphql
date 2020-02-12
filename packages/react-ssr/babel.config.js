@@ -2,8 +2,7 @@ module.exports = {
   presets: [
     ['@babel/preset-env', { useBuiltIns: 'entry', corejs: 3 }],
     '@babel/preset-react',
-    '@babel/preset-typescript',
-    '@xstyled/babel-preset-emotion-css-prop'
+    '@babel/preset-typescript'
   ],
   plugins: [
     ['@babel/plugin-proposal-decorators', { legacy: true }],
@@ -11,7 +10,7 @@ module.exports = {
     '@babel/plugin-proposal-numeric-separator',
     ['@babel/plugin-transform-runtime', { corejs: 3, proposals: true }],
     'macros',
-    'emotion'
+    'styled-components'
   ],
   env: {
     production: {

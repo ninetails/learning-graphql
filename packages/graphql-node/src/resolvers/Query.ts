@@ -2,6 +2,7 @@ import { QueryResolvers } from '../generated/graphqlgen'
 
 const Query: QueryResolvers.Type = {
   feed: async (_, args, context, ___) => {
+    console.log('hit query:feed')
     const where = typeof args.filter === 'string' && args.filter.length > 0
       ? {
         OR: [

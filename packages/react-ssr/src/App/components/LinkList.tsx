@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react'
-import styled from '@emotion/styled'
+import styled from '@xstyled/styled-components'
 import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 import invariant from 'tiny-invariant'
@@ -30,9 +30,9 @@ const StyledList = styled.ul`
 `
 
 function LinkList (): ReactElement {
-  const { loading, data } = useQuery<{ feed: { links: Link[] } }>(FEED_QUERY)
+  const { loading, networkStatus, data } = useQuery<{ feed: { links: Link[] } }>(FEED_QUERY, { notifyOnNetworkStatusChange: true })
 
-  if (loading) return <div>Fetching</div>
+  if (loading || networkStatus === 4) return <div>Fetching</div>
 
   invariant(data, 'Data was not fetched')
   const { links } = data.feed

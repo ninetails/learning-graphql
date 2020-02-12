@@ -9,10 +9,7 @@ import Router from 'koa-router'
 import serve from 'koa-static'
 import compress from 'koa-compress'
 import { renderToString } from 'react-dom/server'
-import { CacheProvider } from '@emotion/core'
-import createEmotionServer from 'create-emotion-server'
-import createCache from '@emotion/cache'
-// @ts-ignore
+import { ServerStyleSheet } from 'styled-components'
 import { minify } from 'html-minifier-terser'
 import { ApolloClient } from 'apollo-client'
 import { createHttpLink } from 'apollo-link-http'
@@ -39,64 +36,58 @@ app.use(compress({
 app.use(serve('public'))
 app.use(serve(join('build', 'public')))
 
-interface ExtractedCritical {
-  html: string
-  css: string
-  ids: string[]
-}
-
 const router = new Router()
 router.get('*', async ctx => {
-  const statsBuffer = await readFileProm(join('build', 'public', 'stats.json'))
-  const { styles, scripts } = JSON.parse(statsBuffer.toString('utf-8'))
+  const sheet = new ServerStyleSheet()
 
-  const cache = createCache()
-  const { extractCritical } = createEmotionServer(cache)
+  try {
+    const statsBuffer = await readFileProm(join('build', 'public', 'stats.json'))
+    const { styles, scripts } = JSON.parse(statsBuffer.toString('utf-8'))
 
-  const client = new ApolloClient({
-    ssrMode: true,
-    link: createHttpLink({
-      uri: serverUrl,
-      fetch,
-      credentials: 'same-origin',
-      headers: ctx.request.header
-    }),
-    cache: new InMemoryCache()
-  })
+    const client = new ApolloClient({
+      ssrMode: true,
+      link: createHttpLink({
+        uri: serverUrl,
+        fetch,
+        credentials: 'same-origin',
+        headers: ctx.request.header
+      }),
+      cache: new InMemoryCache()
+    })
 
-  const tree = (
-    <CacheProvider value={cache}>
-      <App client={client} context={ctx} />
-    </CacheProvider>
-  )
+    const tree = <App client={client} context={ctx} />
 
-  await getDataFromTree(tree)
+    await getDataFromTree(tree)
 
-  const { html, css: inlineCss, ids }: ExtractedCritical = extractCritical(renderToString(tree))
+    const content = renderToString(sheet.collectStyles(tree))
+    const styleTags = sheet.getStyleTags()
 
-  client.writeData({ data: { emotionIds: ids } })
+    const css: string = styles.map((file: string) => `<link rel="stylesheet" href="/${file}"/>`).join('')
+    const js: string = scripts.filter((file: string) => /(main|vendor)/.test(file)).map((file: string) => `<script defer src="/${file}"></script>`).join('')
 
-  const css: string = styles.map((file: string) => `<link rel="stylesheet" href="/${file}"/>`).join('')
-  const js: string = scripts.filter((file: string) => /(main|vendor)/.test(file)).map((file: string) => `<script defer src="/${file}"></script>`).join('')
+    const output = `
+      <!DOCTYPE html>
+      <html lang="pt-BR">
+        <head>
+          <meta charset="UTF-8">
+          <title>React SSR</title>
+          ${css}
+          ${styleTags}
+        </head>
+        <body>
+          <div id="root">${content}</div>
+          <script>window.__SERVER_URL__ = "${serverUrl}"; window.__APOLLO_STATE__ = ${JSON.stringify(client.extract()).replace(/</g, '\\u003c')}</script>
+          ${js}
+        </body>
+      </html>
+    `
 
-  const output = `
-    <!DOCTYPE html>
-    <html lang="pt-BR">
-      <head>
-        <meta charset="UTF-8">
-        <title>React SSR</title>
-        ${css}
-        <style data-emotion-css="${ids.join(' ')}">${inlineCss}</style>
-      </head>
-      <body>
-        <div id="root">${html}</div>
-        <script>window.__SERVER_URL__ = "${serverUrl}"; window.__APOLLO_STATE__ = ${JSON.stringify(client.extract()).replace(/</g, '\\u003c')}</script>
-        ${js}
-      </body>
-    </html>
-  `
-
-  ctx.body = minify(output, { collapseWhitespace: true })
+    ctx.body = minify(output, { collapseWhitespace: true })
+  } catch (err) {
+    console.error(err)
+  } finally {
+    sheet.seal()
+  }
 })
 
 app.use(router.routes())

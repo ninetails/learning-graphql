@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import styled from '@xstyled/emotion'
+import styled from '@xstyled/styled-components'
 
 interface Props {
   link: {

@@ -1,22 +1,23 @@
 import * as React from 'react'
-import { ThemeProvider } from 'emotion-theming'
+import { BaseContext } from 'koa'
+import { ThemeProvider } from '@xstyled/styled-components'
 import { ApolloProvider } from '@apollo/react-hooks'
 import LinkList from './components/LinkList'
 import theme from './theme'
 import ApolloClient from 'apollo-client'
 
 interface AppProps {
-  client: ApolloClient<{}>
-  context?: Object
+  client: ApolloClient<unknown>
+  context?: BaseContext
 }
 
 const App: React.FunctionComponent<AppProps> = ({ client, context }: AppProps) => {
   return (
-    <ThemeProvider theme={theme}>
-      <ApolloProvider client={client}>
+    <ApolloProvider client={client}>
+      <ThemeProvider theme={theme}>
         <LinkList />
-      </ApolloProvider>
-    </ThemeProvider>
+      </ThemeProvider>
+    </ApolloProvider>
   )
 }
 
