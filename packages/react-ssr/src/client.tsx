@@ -4,13 +4,11 @@ import invariant from 'tiny-invariant'
 import { ApolloClient } from 'apollo-client'
 import { createHttpLink } from 'apollo-link-http'
 import { InMemoryCache } from 'apollo-cache-inmemory'
-import fetch from 'unfetch'
 import { hydrate } from 'emotion'
+import gql from 'graphql-tag'
 import App from './App/index'
+import 'cross-fetch/polyfill'
 import './index.css'
-
-// @ts-ignore
-hydrate(window.__EMOTION_IDS__ || []) // eslint-disable-line
 
 const rootEl = document.getElementById('root')
 invariant(rootEl, 'Root element was not found.')
@@ -22,12 +20,20 @@ const client = new ApolloClient({
   connectToDevTools: true,
   link: createHttpLink({
     uri: 'http://localhost:4000',
-    credentials: 'same-origin',
-    fetch
+    credentials: 'same-origin'
   }),
   ssrForceFetchDelay: 100,
   // @ts-ignore
   cache: new InMemoryCache().restore(window.__APOLLO_STATE__ || {}) // eslint-disable-line
 })
 
-render(<App client={client} />)
+client
+  .query({
+    query: gql`
+      {
+        emotionIds @client
+      }
+    `
+  })
+  .then(({ data: { emotionIds = [] } }) => hydrate(emotionIds))
+  .then(() => render(<App client={client} />))
