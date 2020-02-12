@@ -19,7 +19,8 @@ const client = new ApolloClient({
   ssrMode: true,
   connectToDevTools: true,
   link: createHttpLink({
-    uri: 'http://localhost:4000',
+    // @ts-ignore
+    uri: window.__SERVER_URL__,
     credentials: 'same-origin'
   }),
   ssrForceFetchDelay: 100,

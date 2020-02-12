@@ -21,6 +21,8 @@ import { getDataFromTree } from '@apollo/react-ssr'
 import fetch from 'cross-fetch'
 import App from './App'
 
+const serverUrl = 'http://localhost:4000'
+
 const readFileProm = promisify(readFile)
 
 const app = new Koa()
@@ -54,7 +56,7 @@ router.get('*', async ctx => {
   const client = new ApolloClient({
     ssrMode: true,
     link: createHttpLink({
-      uri: 'http://localhost:4000',
+      uri: serverUrl,
       fetch,
       credentials: 'same-origin',
       headers: ctx.request.header
@@ -77,10 +79,6 @@ router.get('*', async ctx => {
   const css: string = styles.map((file: string) => `<link rel="stylesheet" href="/${file}"/>`).join('')
   const js: string = scripts.filter((file: string) => /(main|vendor)/.test(file)).map((file: string) => `<script defer src="/${file}"></script>`).join('')
 
-  const globalVars = [
-    ['__APOLLO_STATE__', client.extract()]
-  ].map<string>(([key, val]) => `window.${key as string} = ${JSON.stringify(val)}`).join('; ')
-
   const output = `
     <!DOCTYPE html>
     <html lang="pt-BR">
@@ -92,7 +90,7 @@ router.get('*', async ctx => {
       </head>
       <body>
         <div id="root">${html}</div>
-        <script>${globalVars}</script>
+        <script>window.__SERVER_URL__ = "${serverUrl}"; window.__APOLLO_STATE__ = ${JSON.stringify(client.extract()).replace(/</g, '\\u003c')}</script>
         ${js}
       </body>
     </html>
